@@ -2,8 +2,8 @@
 import { StyleSheet } from 'react-native'
 
 //imported from this repo
-import AppText from './AppText'
-import colors from '../config/colors'
+import AppText from '../AppText'
+import colors from '../../config/colors'
 
 //create a component
 const ErrorMessage = ({error, visible}) => {

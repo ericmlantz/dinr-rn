@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native'
 import { useFormikContext } from 'formik'
 
 //imported from this repo
-import MyButton from './MyButton'
+import MyButton from '../MyButton'
 
 //create a component
 const SubmitButton = ({title}) => {

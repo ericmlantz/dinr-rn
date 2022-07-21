@@ -1,9 +1,8 @@
 //imported 3rd party liraries
-import { StyleSheet, View } from 'react-native'
 import { useFormikContext } from 'formik'
 
 //imported from this repo
-import AppTextInput from './AppTextInput'
+import AppTextInput from '../AppTextInput'
 import ErrorMessage from './ErrorMessage'
 
 //create a component
@@ -21,11 +20,6 @@ const AppFormField = ({name, ...otherProps}) => {
     </>
   )
 }
-
-//styles
-const styles = StyleSheet.create({
-  
-})
 
 //make this component available to the app
 export default AppFormField

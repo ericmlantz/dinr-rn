@@ -1,8 +1,10 @@
-//import liraries
+//import libraries
 import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet, TouchableHighlight } from 'react-native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
+import defaultStyles from '../config/styles';
 import colors from '../config/colors';
 import AppText from './AppText';
 
@@ -17,8 +19,15 @@ const ListItem = ({title, subTitle, image, IconComponent, onPress, renderRightAc
           {IconComponent}
           {image && <Image style={styles.image} source={image}/>}
           <View style={styles.detailsContainer}>
-            <AppText style={styles.title}>{title}</AppText>
-            {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
+            <AppText style={styles.title} numberOfLines={1}>{title}</AppText>
+            {subTitle && <AppText style={styles.subTitle} numberOfLines={2}>{subTitle}</AppText>}
+          </View>
+          <View style={styles.chevron}>
+            <MaterialCommunityIcons
+              name='chevron-right'
+              size={25}
+              color={defaultStyles.colors.medium}
+            />
           </View>
         </View>
       </TouchableHighlight>
@@ -31,23 +40,30 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     padding: 15,
-    alignItems: 'center',
     backgroundColor: colors.white,
-
+  },
+  chevron: {
+    justifyContent: 'center',
   },
   detailsContainer: {
     justifyContent: 'center',
+    alignContent: 'left',
+    flex: 1,
+    flexGrow: 1,
+
   },
   image: {
     height: 70,
     width: 70,
     borderRadius: 35,
+    marginRight: 10,
   },
   subTitle: {
     color: colors.medium,
   },
   title: {
-    fontWeight: '500'
+    fontWeight: '500',
+    ellipseMode: 'tail',
   },
 });
 

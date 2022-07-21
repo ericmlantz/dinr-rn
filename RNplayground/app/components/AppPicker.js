@@ -7,6 +7,7 @@ import AppText from './AppText'
 import React from 'react'
 import MySafeAreaView from './MySafeAreaView'
 import PickerItem from './PickerItem'
+import colors from '../config/colors'
 
 const AppPicker = ({icon, items, placeholder, onSelectItem, selectedItem}) => {
   const [modalVisible, setModalVisible] = useState(false)
@@ -20,7 +21,9 @@ const AppPicker = ({icon, items, placeholder, onSelectItem, selectedItem}) => {
         color={defaultStyles.colors.medium}
         style={styles.icon}
       />}
-      <AppText style={styles.text}>{selectedItem ? selectedItem.label : placeholder}</AppText>
+      {selectedItem ? (
+      <AppText style={styles.text}>{selectedItem.label}</AppText> ) : 
+      (<AppText style={[styles.text, {color: defaultStyles.colors.medium}]}>{placeholder}</AppText>)}
       <MaterialCommunityIcons
         name='chevron-down'
         size={20}
@@ -62,7 +65,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   text: {
-    flex: 1
+    flex: 1,
   }
 })
 

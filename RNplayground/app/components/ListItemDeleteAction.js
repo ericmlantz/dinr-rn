@@ -1,4 +1,4 @@
-//import liraries
+//import libraries
 import React from 'react';
 import { View, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'

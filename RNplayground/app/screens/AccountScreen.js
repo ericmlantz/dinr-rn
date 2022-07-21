@@ -32,8 +32,8 @@ const AccountScreen = () => {
   return (
     <MySafeAreaView style={styles.screen}>
       <View style={styles.container}>
-      <ListItem
-        title="Mosh Hamedani"
+      <ListItem style={styles.listItem}
+        title="Mosh Hamedanidkfjdaklfjkldjfksldjfkalsjfklsdjfklasjfklsjfklsdjfklasjfklsdjfklsdfjakslfjsklfsklfjaklfjklsdjfslkdj"
         subTitle="me@me.com"
         image={require('../assets/mosh.jpg')}
       />
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: colors.light
-  }
+  },
 });
 
 //make this component available to the app

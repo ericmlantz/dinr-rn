@@ -1,18 +1,11 @@
 //imported 3rd party liraries
 import { StyleSheet, Image } from 'react-native'
-import { Formik } from 'formik'
 import * as Yup from 'yup'
 
 //imported from this repo
 import MySafeAreaView from '../components/MySafeAreaView'
-import AppTextInput from '../components/AppTextInput'
-import MyButton from '../components/MyButton'
-import AppText from '../components/AppText'
 import colors from '../config/colors'
-import ErrorMessage from '../components/ErrorMessage'
-import AppFormField from '../components/AppFormField'
-import SubmitButton from '../components/SubmitButton'
-import AppForm from '../components/AppForm'
+import {AppFormField, AppForm, SubmitButton} from "../components/Forms";
 
 
 const validationSchema = Yup.object().shape({

@@ -11,6 +11,7 @@ const AppTextInput = ({icon, ...otherProps}) => {
       {icon && <MaterialCommunityIcons name={icon} size={20} color={defaultStyles.colors.medium} style={styles.icon}/>}
       <TextInput 
         style={[defaultStyles.text, {flex:1}]}
+        placeholderTextColor={defaultStyles.colors.medium}
         {...otherProps}
       />
     </View>
