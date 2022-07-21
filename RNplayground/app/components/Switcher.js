@@ -1,9 +1,9 @@
-//imported 3rd party liraries
+//imported 3rd party libraries
 import { StyleSheet, Switch } from 'react-native'
 import { useState } from 'react'
 
 //imported from this repo
-import MySafeAreaView from './MySafeAreaView'
+import Screen from './Screen'
 
 //create a component
 const Switcher = () => {
@@ -11,9 +11,9 @@ const Switcher = () => {
 
   //render 
   return (
-    <MySafeAreaView>
+    <Screen>
       <Switch value={isNew} onValueChange={newValue => setIsNew(newValue)} />
-    </MySafeAreaView>
+    </Screen>
   )
 }
 

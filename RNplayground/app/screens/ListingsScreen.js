@@ -1,8 +1,8 @@
-//imported from 3rd party liraries
+//imported from 3rd party libraries
 import React, { Component } from 'react';
 import { StyleSheet, FlatList } from 'react-native';
 
-import MySafeAreaView from '../components/MySafeAreaView';
+import Screen from '../components/Screen';
 import Card from '../components/Card'
 import colors from '../config/colors';
 
@@ -23,7 +23,7 @@ const listings = [
 // create a component
 const ListingsScreen = () => {
   return (
-  <MySafeAreaView style={styles.screen}>
+  <Screen style={styles.screen}>
     <FlatList
       data={listings}
       keyExtractor={listing => listing.id.toString()}
@@ -35,7 +35,7 @@ const ListingsScreen = () => {
         />
       }
     />
-   </MySafeAreaView>
+   </Screen>
   );
 };
 

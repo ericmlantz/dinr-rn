@@ -1,12 +1,12 @@
-//import 3rd party liraries
+//import 3rd party libraries
 import React, { useState, Component } from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 
-import MySafeAreaView from '../components/MySafeAreaView';
+import Screen from '../components/Screen';
 import colors from '../config/colors';
 import Icon from '../components/Icon'
-import ListItem from '../components/ListItem';
-import ListItemSeperator from '../components/ListItemSeparator';
+import ListItem from '../components/lists/ListItem';
+import ListItemSeperator from '../components/lists/ListItemSeparator';
 
 const menuItems = [
   {
@@ -30,7 +30,7 @@ const menuItems = [
 // create a component
 const AccountScreen = () => {
   return (
-    <MySafeAreaView style={styles.screen}>
+    <Screen style={styles.screen}>
       <View style={styles.container}>
       <ListItem style={styles.listItem}
         title="Mosh Hamedanidkfjdaklfjkldjfksldjfkalsjfklsdjfklasjfklsjfklsdjfklasjfklsdjfklsdfjakslfjsklfsklfjaklfjklsdjfslkdj"
@@ -60,7 +60,7 @@ const AccountScreen = () => {
           backgroundColor={colors.danger}/>
         }
       />
-    </MySafeAreaView>
+    </Screen>
   );
 };
 

@@ -1,12 +1,12 @@
-//import liraries
+//import libraries
 import React, { useState } from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 
-import ListItem from '../components/ListItem';
-import MySafeAreaView from '../components/MySafeAreaView';
+import ListItem from '../components/lists/ListItem';
+import Screen from '../components/Screen';
 import colors from '../config/colors';
-import ListItemSeperator from '../components/ListItemSeparator';
-import ListItemDeleteAction from '../components/ListItemDeleteAction';
+import ListItemSeperator from '../components/lists/ListItemSeparator';
+import ListItemDeleteAction from '../components/lists/ListItemDeleteAction';
 
 
 const initialMessages = [
@@ -33,7 +33,7 @@ const MessagesScreen = () => {
     setMessages(messages.filter(m => m.id !== message.id))
   }
   return (
-    <MySafeAreaView>
+    <Screen>
     <FlatList
       data={messages}
       keyExtractor={message => message.id.toString()}
@@ -57,7 +57,7 @@ const MessagesScreen = () => {
       }
     ])}
     />
-    </MySafeAreaView>
+    </Screen>
   );
 };
 const styles = StyleSheet.create({

@@ -1,53 +1,81 @@
-import { StyleSheet, FlatList, TextInput, View,TouchableWithoutFeedback, Modal, Button } from 'react-native'
+import React from 'react'
 import { useState } from 'react'
+import {
+  StyleSheet,
+  FlatList,
+  TextInput,
+  View,
+  TouchableWithoutFeedback,
+  Modal,
+  Button
+} from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 import defaultStyles from '../config/styles'
 import AppText from './AppText'
-import React from 'react'
-import MySafeAreaView from './MySafeAreaView'
+import Screen from './Screen'
 import PickerItem from './PickerItem'
-import colors from '../config/colors'
 
-const AppPicker = ({icon, items, placeholder, onSelectItem, selectedItem}) => {
+const AppPicker = ({
+  icon,
+  items,
+  numberOfColumns = 1,
+  placeholder,
+  PickerItemComponent = PickerItem,
+  onSelectItem,
+  selectedItem,
+  width = '100%'
+}) => {
   const [modalVisible, setModalVisible] = useState(false)
+
   return (
     <>
-    <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-    <View style={styles.container}>
-      {icon && <MaterialCommunityIcons
-        name={icon}
-        size={20}
-        color={defaultStyles.colors.medium}
-        style={styles.icon}
-      />}
-      {selectedItem ? (
-      <AppText style={styles.text}>{selectedItem.label}</AppText> ) : 
-      (<AppText style={[styles.text, {color: defaultStyles.colors.medium}]}>{placeholder}</AppText>)}
-      <MaterialCommunityIcons
-        name='chevron-down'
-        size={20}
-        color={defaultStyles.colors.medium}/>
-    </View>
-    </TouchableWithoutFeedback>
-    <Modal visible={modalVisible} animationType="slide">
-      <MySafeAreaView>
-        <Button title='Close' onPress={() => setModalVisible(false)}/>
-        <FlatList
-          data={items}
-          keyExtractor={(item) => item.value.toString()}
-          renderItem={({item}) => 
-          <PickerItem 
-            label={item.label}
-            onPress={() => {
-              setModalVisible(false)
-              onSelectItem(item)
-            }}
+      <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
+        <View style={[styles.container, { width }]}>
+          {icon && (
+            <MaterialCommunityIcons
+              name={icon}
+              size={20}
+              color={defaultStyles.colors.medium}
+              style={styles.icon}
             />
-          }
+          )}
+          {selectedItem ? (
+            <AppText style={styles.text}>{selectedItem.label}</AppText>
+          ) : (
+            <AppText
+              style={[styles.text, { color: defaultStyles.colors.medium }]}
+            >
+              {placeholder}
+            </AppText>
+          )}
+          <MaterialCommunityIcons
+            name="chevron-down"
+            size={20}
+            color={defaultStyles.colors.medium}
           />
-      </MySafeAreaView>
-    </Modal>
+        </View>
+      </TouchableWithoutFeedback>
+      <Modal visible={modalVisible} animationType="slide">
+        <Screen>
+          <Button title="Close" onPress={() => setModalVisible(false)} />
+          <FlatList
+            data={items}
+            keyExtractor={(item) => item.value.toString()}
+            numColumns={numberOfColumns}
+            renderItem={({ item }) => (
+              <PickerItemComponent
+                item={item}
+                label={item.label}
+                onPress={() => {
+                  setModalVisible(false)
+                  onSelectItem(item)
+                }}
+              />
+            )}
+          />
+        </Screen>
+      </Modal>
     </>
   )
 }
@@ -57,15 +85,14 @@ const styles = StyleSheet.create({
     backgroundColor: defaultStyles.colors.light,
     borderRadius: 25,
     flexDirection: 'row',
-    width: '100%',
-    padding: 15,  
+    padding: 15,
     marginVertical: 10
   },
   icon: {
-    marginRight: 10,
+    marginRight: 10
   },
   text: {
-    flex: 1,
+    flex: 1
   }
 })
 

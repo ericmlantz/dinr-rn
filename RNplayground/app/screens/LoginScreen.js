@@ -1,9 +1,9 @@
-//imported 3rd party liraries
+//imported 3rd party libraries
 import { StyleSheet, Image } from 'react-native'
 import * as Yup from 'yup'
 
 //imported from this repo
-import MySafeAreaView from '../components/MySafeAreaView'
+import Screen from '../components/Screen'
 import colors from '../config/colors'
 import {AppFormField, AppForm, SubmitButton} from "../components/Forms";
 
@@ -18,7 +18,7 @@ const LoginScreen = (props) => {
 
   //render 
   return (
-      <MySafeAreaView style={styles.container}>
+      <Screen style={styles.container}>
         <Image style={styles.logo} source={require('../assets/logo-red.png')}/>
 
         <AppForm
@@ -47,7 +47,7 @@ const LoginScreen = (props) => {
             />
             <SubmitButton title='Login'/>
         </AppForm>
-      </MySafeAreaView>
+      </Screen>
   )
 }
 

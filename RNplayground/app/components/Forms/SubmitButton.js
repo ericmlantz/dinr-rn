@@ -1,4 +1,4 @@
-//imported 3rd party liraries
+//imported 3rd party libraries
 import { StyleSheet, View } from 'react-native'
 import { useFormikContext } from 'formik'
 
@@ -6,18 +6,14 @@ import { useFormikContext } from 'formik'
 import MyButton from '../MyButton'
 
 //create a component
-const SubmitButton = ({title}) => {
-const {handleSubmit} = useFormikContext()
-  //render 
-  return (
-    <MyButton title={title} onPress={handleSubmit}/>
-  )
+const SubmitButton = ({ title }) => {
+  const { handleSubmit } = useFormikContext()
+  //render
+  return <MyButton title={title} onPress={handleSubmit} />
 }
 
 //styles
-const styles = StyleSheet.create({
-  
-})
+const styles = StyleSheet.create({})
 
 //make this component available to the app
 export default SubmitButton

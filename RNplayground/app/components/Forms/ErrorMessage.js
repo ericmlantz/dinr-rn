@@ -1,4 +1,4 @@
-//imported 3rd party liraries
+//imported 3rd party libraries
 import { StyleSheet } from 'react-native'
 
 //imported from this repo
@@ -6,13 +6,10 @@ import AppText from '../AppText'
 import colors from '../../config/colors'
 
 //create a component
-const ErrorMessage = ({error, visible}) => {
+const ErrorMessage = ({ error, visible }) => {
   if (!visible || !error) return null
-  //render 
-  return (
-    <AppText style={styles.error}>{error}
-    </AppText>
-  )
+  //render
+  return <AppText style={styles.error}>{error}</AppText>
 }
 
 //styles

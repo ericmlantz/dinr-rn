@@ -1,4 +1,4 @@
-//import liraries
+//import libraries
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -7,7 +7,6 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 const Icon = ({name, size=40, backgroundColor='#000', iconColor='#fff'}) => {
   return (
     <View style={{
-      marginRight: 10,
       width: size,
       height: size,
       borderRadius: size/2,

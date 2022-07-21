@@ -1,4 +1,4 @@
-//imported 3rd party liraries
+//imported 3rd party libraries
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import AppText from './AppText'
 
@@ -6,12 +6,12 @@ import AppText from './AppText'
 
 
 //create a component
-const PickerItem = ({label, onPress}) => {
+const PickerItem = ({item, onPress}) => {
 
   //render 
   return (
     <TouchableOpacity onPress={onPress}>
-      <AppText style={styles.text}>{label}</AppText>
+      <AppText style={styles.text}>{item.label}</AppText>
     </TouchableOpacity>
   )
 }
