@@ -1,6 +1,7 @@
 //imported 3rd party libraries
 import { StyleSheet, Switch, Text, TextInput, View } from 'react-native'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import * as ImagePicker from 'expo-image-picker'
 
 //imported from this repo
 import WelcomeScreen from './app/screens/WelcomeScreen'
@@ -34,15 +35,27 @@ const categories = [
   }
 ]
 //create a component
-export default function App() {
+export default function App () {
   // AppPicker Usage
   const [isNew, setIsNew] = useState(false)
   const [category, setCategory] = useState(categories[0])
   //----------------
+  const requestPermission = async () => {
+    const { granted } = await ImagePicker.requestMediaLibraryPermissionsAsync()
+    if(!granted) {
+      alert('You need to enable permission to access the media library')
+    }
+  }
+
+  useEffect(() => {
+    requestPermission()
+  }, [])
 
   //render
   return (
-    <ListingEditScreen />
+    <Screen>
+      <Text>Hey</Text>
+    </Screen>
 
     // AppPicker Usage
     // AppPicker Usage

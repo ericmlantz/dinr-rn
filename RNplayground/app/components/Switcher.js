@@ -9,18 +9,16 @@ import Screen from './Screen'
 const Switcher = () => {
   const [isNew, setIsNew] = useState(false)
 
-  //render 
+  //render
   return (
     <Screen>
-      <Switch value={isNew} onValueChange={newValue => setIsNew(newValue)} />
+      <Switch value={isNew} onValueChange={(newValue) => setIsNew(newValue)} />
     </Screen>
   )
 }
 
 //styles
-const styles = StyleSheet.create({
-  
-})
+const styles = StyleSheet.create({})
 
 //make this component available to the app
 export default Switcher

@@ -4,11 +4,9 @@ import AppText from './AppText'
 
 //imported from this repo
 
-
 //create a component
-const PickerItem = ({item, onPress}) => {
-
-  //render 
+const PickerItem = ({ item, onPress }) => {
+  //render
   return (
     <TouchableOpacity onPress={onPress}>
       <AppText style={styles.text}>{item.label}</AppText>

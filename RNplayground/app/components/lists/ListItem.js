@@ -1,30 +1,41 @@
 //import libraries
-import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, TouchableHighlight } from 'react-native';
-import Swipeable from 'react-native-gesture-handler/Swipeable';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import React, { Component } from 'react'
+import { View, Text, Image, StyleSheet, TouchableHighlight } from 'react-native'
+import Swipeable from 'react-native-gesture-handler/Swipeable'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 
-import defaultStyles from '../../config/styles';
-import colors from '../../config/colors';
-import AppText from '../AppText';
+import defaultStyles from '../../config/styles'
+import colors from '../../config/colors'
+import AppText from '../AppText'
 
 // create a component
-const ListItem = ({title, subTitle, image, IconComponent, onPress, renderRightActions}) => {
+const ListItem = ({
+  title,
+  subTitle,
+  image,
+  IconComponent,
+  onPress,
+  renderRightActions
+}) => {
   return (
     <Swipeable renderRightActions={renderRightActions}>
-      <TouchableHighlight
-      underlayColor={colors.light}
-      onPress={onPress}>
+      <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
         <View style={styles.container}>
           {IconComponent}
-          {image && <Image style={styles.image} source={image}/>}
+          {image && <Image style={styles.image} source={image} />}
           <View style={styles.detailsContainer}>
-            <AppText style={styles.title} numberOfLines={1}>{title}</AppText>
-            {subTitle && <AppText style={styles.subTitle} numberOfLines={2}>{subTitle}</AppText>}
+            <AppText style={styles.title} numberOfLines={1}>
+              {title}
+            </AppText>
+            {subTitle && (
+              <AppText style={styles.subTitle} numberOfLines={2}>
+                {subTitle}
+              </AppText>
+            )}
           </View>
           <View style={styles.chevron}>
             <MaterialCommunityIcons
-              name='chevron-right'
+              name="chevron-right"
               size={25}
               color={defaultStyles.colors.medium}
             />
@@ -32,40 +43,39 @@ const ListItem = ({title, subTitle, image, IconComponent, onPress, renderRightAc
         </View>
       </TouchableHighlight>
     </Swipeable>
-  );
-};
+  )
+}
 
 // define your styles
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     padding: 15,
-    backgroundColor: colors.white,
+    backgroundColor: colors.white
   },
   chevron: {
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   detailsContainer: {
     justifyContent: 'center',
     alignContent: 'left',
     flex: 1,
-    flexGrow: 1,
-
+    flexGrow: 1
   },
   image: {
     height: 70,
     width: 70,
     borderRadius: 35,
-    marginRight: 10,
+    marginRight: 10
   },
   subTitle: {
-    color: colors.medium,
+    color: colors.medium
   },
   title: {
     fontWeight: '500',
-    ellipseMode: 'tail',
-  },
-});
+    ellipseMode: 'tail'
+  }
+})
 
 //make this component available to the app
-export default ListItem;
+export default ListItem
