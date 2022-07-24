@@ -1,7 +1,13 @@
 //imported 3rd party libraries
-import { StyleSheet, Switch, Text, TextInput, View } from 'react-native'
+import { StyleSheet, Button, Switch, Text, TextInput, View, Image } from 'react-native'
+
 import { useEffect, useState } from 'react'
 import * as ImagePicker from 'expo-image-picker'
+import { NavigationContainer, useNavigation } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+
 
 //imported from this repo
 import WelcomeScreen from './app/screens/WelcomeScreen'
@@ -19,51 +25,45 @@ import Switcher from './app/components/Switcher'
 import AppPicker from './app/components/AppPicker'
 import LoginScreen from './app/screens/LoginScreen'
 import ListingEditScreen from './app/screens/ListingEditScreen'
+import ImageInput from './app/components/ImageInput'
+import ImageInputList from './app/components/ImageInputList'
+import NavigationTests from './app/screens/NavigationTests'
+import AuthNavigator from './app/components/AuthNavigator'
 
-const categories = [
-  {
-    label: 'Furniture',
-    value: 1
-  },
-  {
-    label: 'Clothing',
-    value: 2
-  },
-  {
-    label: 'Cameras',
-    value: 3
-  }
-]
+// const categories = [
+//   {
+//     label: 'Furniture',
+//     value: 1
+//   },
+//   {
+//     label: 'Clothing',
+//     value: 2
+//   },
+//   {
+//     label: 'Cameras',
+//     value: 3
+//   }
+// ]
+
 //create a component
-export default function App () {
+export default function App ()
+{
   // AppPicker Usage
-  const [isNew, setIsNew] = useState(false)
-  const [category, setCategory] = useState(categories[0])
+  // const [isNew, setIsNew] = useState(false)
+  // const [category, setCategory] = useState(categories[0])
   //----------------
-  const requestPermission = async () => {
-    const { granted } = await ImagePicker.requestMediaLibraryPermissionsAsync()
-    if(!granted) {
-      alert('You need to enable permission to access the media library')
-    }
-  }
-
-  useEffect(() => {
-    requestPermission()
-  }, [])
 
   //render
   return (
-    <Screen>
-      <Text>Hey</Text>
-    </Screen>
-
-    // AppPicker Usage
-    // AppPicker Usage
-    // <AppPicker
-    // selectedItem={category}
-    // onSelectItem={item => setCategory(item)}
-    // items={categories}
-    // icon='apps' placeholder='Category'/>
-    // <AppTextInput icon='email' placeholder="Email"/>
+    <AuthNavigator />
   )
 }
+
+// AppPicker Usage
+// AppPicker Usage
+// <AppPicker
+// selectedItem={category}
+// onSelectItem={item => setCategory(item)}
+// items={categories}
+// icon='apps' placeholder='Category'/>
+// <AppTextInput icon='email' placeholder="Email"/>

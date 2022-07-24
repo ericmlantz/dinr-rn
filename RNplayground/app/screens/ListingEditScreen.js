@@ -1,6 +1,5 @@
 //imported 3rd party libraries
 import React from 'react'
-import { StyleSheet } from 'react-native'
 import * as Yup from 'yup'
 
 //imported from this repo
@@ -12,12 +11,15 @@ import {
   SubmitButton
 } from '../components/Forms'
 import CategoryPickerItem from '../components/CategoryPickerItem'
+import AppFormImagePicker from '../components/Forms/AppFormImagePicker'
+import useLocation from '../hooks/useLocation'
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label('Title'),
   price: Yup.number().required().min(1).max(10000).label('Price'),
   description: Yup.string().label('Description'),
-  category: Yup.object().required().nullable().label('Category')
+  category: Yup.object().required().nullable().label('Category'),
+  images: Yup.array().min(1, 'Please select at least one image.')
 })
 
 const categories = [
@@ -27,40 +29,44 @@ const categories = [
 ]
 //create a component
 const ListingEditScreen = () => {
+  const location = useLocation()
+
   //render
   return (
     <Screen>
       <AppForm
-        initialValues={{
+        initialValues={ {
           title: '',
           price: '',
           description: '',
-          category: null
-        }}
-        onSubmit={(values) => console.log(values)}
-        validationSchema={validationSchema}
+          category: null,
+          images: [],
+        } }
+        onSubmit={ (values) => console.log(location) }
+        validationSchema={ validationSchema }
       >
-        <AppFormField maxLength={255} name="title" placeholder="Title" />
+        <AppFormImagePicker name='images' />
+        <AppFormField maxLength={ 255 } name="title" placeholder="Title" />
         <AppFormField
           keyboardType="numeric"
-          maxLength={8}
+          maxLength={ 8 }
           name="price"
           placeholder="Price"
-          width={120}
+          width={ 120 }
         />
         <AppFormPicker
-          items={categories}
+          items={ categories }
           name="category"
-          numberOfColumns={3}
-          PickerItemComponent={CategoryPickerItem}
+          numberOfColumns={ 3 }
+          PickerItemComponent={ CategoryPickerItem }
           placeholder="Category"
           width="50%"
         />
         <AppFormField
-          maxLength={255}
+          maxLength={ 255 }
           multiline
           name="description"
-          numberOfLines={3}
+          numberOfLines={ 3 }
           placeholder="Description"
         />
         <SubmitButton title="Post" />
