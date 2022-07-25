@@ -7,16 +7,18 @@ import ListItem from '../components/lists/ListItem';
 import colors from '../config/colors';
 
 // create a component
-const ListingDetailsScreen = () => {
+const ListingDetailsScreen = ( { route } ) =>
+{
+  const listing = route.params
   return (
-    <View style={styles.container}>
-      <Image style={styles.image} source={require('../assets/jacket.jpg')}/>
-      <View style={styles.detailsContainer}>
-        <AppText style={styles.title}>Red jacket for sale</AppText>
-        <AppText style={styles.price}>$100</AppText>
-        <View style={styles.userContainer}>
-          <ListItem 
-            image={require('../assets/mosh.jpg')}
+    <View style={ styles.container }>
+      <Image style={ styles.image } source={ listing.image } />
+      <View style={ styles.detailsContainer }>
+        <AppText style={ styles.title }>{ listing.title }</AppText>
+        <AppText style={ styles.price }>{ listing.price }</AppText>
+        <View style={ styles.userContainer }>
+          <ListItem
+            image={ require( '../assets/mosh.jpg' ) }
             title='Mosh Hamedani'
             subTitle='5 Listings'
           />
@@ -27,9 +29,9 @@ const ListingDetailsScreen = () => {
 };
 
 // define your styles
-const styles = StyleSheet.create({
+const styles = StyleSheet.create( {
   detailsContainer: {
-    padding: 20, 
+    padding: 20,
   },
   image: {
     width: '100%',
@@ -48,7 +50,7 @@ const styles = StyleSheet.create({
   userContainer: {
     marginVertical: 40,
   }
-});
+} );
 
 //make this component available to the app
 export default ListingDetailsScreen;

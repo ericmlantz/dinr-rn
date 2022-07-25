@@ -18,46 +18,49 @@ const menuItems = [
     }
   },
   {
-    id: 1,
+    id: 2,
     title: 'My Messages',
     icon: {
       name: "email",
       backgroundColor: colors.secondary
-    }
+    },
+    targetScreen: "Messages"
   }
 ]
 
 // create a component
-const AccountScreen = () => {
+const AccountScreen = ( { navigation } ) =>
+{
   return (
-    <Screen style={styles.screen}>
-      <View style={styles.container}>
-      <ListItem style={styles.listItem}
-        title="Mosh Hamedanidkfjdaklfjkldjfksldjfkalsjfklsdjfklasjfklsjfklsdjfklasjfklsdjfklsdfjakslfjsklfsklfjaklfjklsdjfslkdj"
-        subTitle="me@me.com"
-        image={require('../assets/mosh.jpg')}
-      />
+    <Screen style={ styles.screen }>
+      <View style={ styles.container }>
+        <ListItem style={ styles.listItem }
+          title="Mosh Hamedanidkfjdaklfjkldjfksldjfkalsjfklsdjfklasjfklsjfklsdjfklasjfklsdjfklsdfjakslfjsklfsklfjaklfjklsdjfslkdj"
+          subTitle="me@me.com"
+          image={ require( '../assets/mosh.jpg' ) }
+        />
       </View>
-      <View style={styles.container}>
+      <View style={ styles.container }>
         <FlatList
-        data={menuItems}
-        keyExtractor={menuItem => menuItem.title}
-        renderItem={({item}) => 
-          <ListItem
-            title={item.title}
-            IconComponent={
-              <Icon name={item.icon.name} backgroundColor={item.icon.backgroundColor}
-              />}
-          />
-        }
-        ItemSeparatorComponent={ListItemSeperator}
+          data={ menuItems }
+          keyExtractor={ menuItem => menuItem.title }
+          renderItem={ ( { item } ) =>
+            <ListItem
+              title={ item.title }
+              IconComponent={
+                <Icon name={ item.icon.name } backgroundColor={ item.icon.backgroundColor }
+                /> }
+              onPress={ () => navigation.navigate( item.targetScreen ) }
+            />
+          }
+          ItemSeparatorComponent={ ListItemSeperator }
         />
       </View>
       <ListItem
         title='Logout'
         IconComponent={
           <Icon name='logout'
-          backgroundColor={colors.danger}/>
+            backgroundColor={ colors.danger } />
         }
       />
     </Screen>
@@ -65,7 +68,7 @@ const AccountScreen = () => {
 };
 
 // define your styles
-const styles = StyleSheet.create({
+const styles = StyleSheet.create( {
   container: {
     marginVertical: 20
   },
@@ -73,7 +76,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.light
   },
-});
+} );
 
 //make this component available to the app
 export default AccountScreen;

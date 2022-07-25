@@ -3,7 +3,7 @@ import { StyleSheet, Button, Switch, Text, TextInput, View, Image } from 'react-
 
 import { useEffect, useState } from 'react'
 import * as ImagePicker from 'expo-image-picker'
-import { NavigationContainer, useNavigation } from '@react-navigation/native'
+import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
@@ -28,7 +28,9 @@ import ListingEditScreen from './app/screens/ListingEditScreen'
 import ImageInput from './app/components/ImageInput'
 import ImageInputList from './app/components/ImageInputList'
 import NavigationTests from './app/screens/NavigationTests'
-import AuthNavigator from './app/components/AuthNavigator'
+import AuthNavigator from './app/navigation/AuthNavigator'
+import navigationTheme from './app/navigation/navigationTheme'
+import AppNavigator from './app/navigation/AppNavigator'
 
 // const categories = [
 //   {
@@ -48,6 +50,7 @@ import AuthNavigator from './app/components/AuthNavigator'
 //create a component
 export default function App ()
 {
+
   // AppPicker Usage
   // const [isNew, setIsNew] = useState(false)
   // const [category, setCategory] = useState(categories[0])
@@ -55,7 +58,9 @@ export default function App ()
 
   //render
   return (
-    <AuthNavigator />
+    <NavigationContainer theme={ navigationTheme }>
+      <AppNavigator />
+    </NavigationContainer>
   )
 }
 

@@ -1,25 +1,29 @@
 //import libraries
 import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 import colors from '../config/colors';
 import AppText from './AppText';
 
 // create a component
-const Card = ({title, subTitle, image}) => {
+const Card = ( { title, subTitle, image, onPress } ) =>
+{
   return (
-    <View style={styles.card}>
-      <Image style={styles.image} source={image} />
-      <View style={styles.detailsContainer}>
-        <AppText style={styles.title}>{title}</AppText>
-        <AppText style={styles.subTitle}>{subTitle}</AppText>
+    <TouchableWithoutFeedback onPress={ onPress }>
+      <View style={ styles.card }>
+        <Image style={ styles.image } source={ image } />
+        <View style={ styles.detailsContainer }>
+          <AppText style={ styles.title }>{ title }</AppText>
+          <AppText style={ styles.subTitle }>{ subTitle }</AppText>
+        </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 
 // define your styles
-const styles = StyleSheet.create({
+const styles = StyleSheet.create( {
   card: {
     borderRadius: 15,
     backgroundColor: 'white',
@@ -40,7 +44,7 @@ const styles = StyleSheet.create({
   title: {
     marginBottom: 10
   }
-});
+} );
 
 //make this component available to the app
 export default Card;

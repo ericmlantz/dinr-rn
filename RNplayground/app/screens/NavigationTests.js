@@ -8,7 +8,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 //imported from this repo
 import Screen from '../components/Screen'
 
-//Components To Use As Tabbed Pages and Navigation Definitions
+//Components To Use As Tabbed Pages and navigation Definitions
 const Stack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator()
 
