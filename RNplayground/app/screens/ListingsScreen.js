@@ -1,6 +1,6 @@
 //imported from 3rd party libraries
 import { useState, useEffect } from 'react'
-import { StyleSheet, FlatList, ActivityIndicator } from 'react-native'
+import { StyleSheet, FlatList } from 'react-native'
 
 import MyButton from '../components/MyButton'
 import AppText from '../components/AppText'
@@ -9,27 +9,22 @@ import Card from '../components/Card'
 import colors from '../config/colors'
 import routes from '../navigation/routes'
 import listingsApi from '../api/listings'
+import ActivityIndicator from '../components/ActivityIndicator'
+import useApi from '../hooks/useApi'
 
 // create a component
 const ListingsScreen = ({ navigation }) => {
-  const [listings, setListings] = useState([])
-  const [error, setError] = useState(false)
-  const [loading, setLoading] = useState(false)
+  //this is if only using one Api call. Look below for how to use for mutliple. ↓
+  const {
+    data: listings,
+    error,
+    loading,
+    request: loadListings
+  } = useApi(listingsApi.getListings)
 
   useEffect(() => {
-    loadListings()
+    loadListings(1, 2, 3)
   }, [])
-
-  const loadListings = async () => {
-    setLoading(true)
-    const response = await listingsApi.getListings()
-    setLoading(false)
-
-    if (!response.ok) return setError(true)
-
-    setError(false)
-    setListings(response.data)
-  }
 
   return (
     <Screen style={styles.screen}>
@@ -39,7 +34,7 @@ const ListingsScreen = ({ navigation }) => {
           <MyButton title="Retry" onPress={loadListings} />
         </>
       )}
-      <ActivityIndicator animating={loading} size="large" />
+      <ActivityIndicator visible={loading} />
       <FlatList
         data={listings}
         keyExtractor={(listing) => listing.id.toString()}
@@ -66,3 +61,4 @@ const styles = StyleSheet.create({
 
 //make this component available to the app
 export default ListingsScreen
+
