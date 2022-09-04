@@ -12,5 +12,6 @@
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
   "javascript.format.insertSpaceAfterConstructor": true,
-  "editor.formatOnType": true
+  "editor.formatOnType": true,
+  "cyber77.brightness": 1
 }

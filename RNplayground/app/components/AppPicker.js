@@ -3,7 +3,6 @@ import { useState } from 'react'
 import {
   StyleSheet,
   FlatList,
-  TextInput,
   View,
   TouchableWithoutFeedback,
   Modal,

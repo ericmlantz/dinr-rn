@@ -9,26 +9,28 @@ import ImageInput from './ImageInput'
 const ImageInputList = ({ imageUris = [], onRemoveImage, onAddImage }) => {
   const scrollView = useRef()
 
-  //render 
+  //render
   return (
     <View>
       <ScrollView
-        ref={ scrollView }
+        ref={scrollView}
         horizontal
-        onContentSizeChange={ () => scrollView.current.scrollToEnd() }>
-        <View style={ styles.container }>
-          { imageUris.map((uri) => (
-            <View key={ uri } style={ styles.image }>
+        onContentSizeChange={() => scrollView.current.scrollToEnd()}
+      >
+        <View style={styles.container}>
+          {imageUris.map((uri) => (
+            <View key={uri} style={styles.image}>
               <ImageInput
-                imageUri={ uri }
-                onChangeImage={ () => onRemoveImage(uri) } />
+                imageUri={uri}
+                onChangeImage={() => onRemoveImage(uri)}
+              />
             </View>
-          )) }
-          <View style={ styles.image }>
-            <ImageInput onChangeImage={ (uri) => onAddImage(uri) } />
+          ))}
+          <View style={styles.image}>
+            <ImageInput onChangeImage={(uri) => onAddImage(uri)} />
           </View>
         </View>
-      </ScrollView >
+      </ScrollView>
     </View>
   )
 }

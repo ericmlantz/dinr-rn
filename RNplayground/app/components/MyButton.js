@@ -1,16 +1,19 @@
 //import libraries
-import React from 'react';
-import {Text, StyleSheet, TouchableHighlight } from 'react-native';
-import colors from '../config/colors';
+import React from 'react'
+import { Text, StyleSheet, TouchableHighlight } from 'react-native'
+import colors from '../config/colors'
 
 // create a component
-const MyButton = ({title, onPress, color='primary'}) => {
+const MyButton = ({ title, onPress, color = 'primary' }) => {
   return (
-  <TouchableHighlight style={[styles.container, {backgroundColor: colors[color]}]} onPress={onPress}>
+    <TouchableHighlight
+      style={[styles.container, { backgroundColor: colors[color] }]}
+      onPress={onPress}
+    >
       <Text style={styles.button}>{title}</Text>
-  </TouchableHighlight>
+    </TouchableHighlight>
   )
-};
+}
 
 // define your styles
 const styles = StyleSheet.create({
@@ -19,7 +22,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
     fontWeight: 'bold',
-    textTransform:'uppercase' 
+    textTransform: 'uppercase'
   },
   container: {
     backgroundColor: colors.primary,
@@ -28,9 +31,9 @@ const styles = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    marginVertical: 10,
+    marginVertical: 10
   }
-});
+})
 
 //make this component available to the app
-export default MyButton;
+export default MyButton

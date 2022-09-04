@@ -1,28 +1,33 @@
-//imported 3rd party libraries
 import { NavigationContainer } from '@react-navigation/native'
 import { useState } from 'react'
-import jwtDecode from 'jwt-decode'
+import AppLoading from 'expo-app-loading'
 
 //imported from this repo
 import navigationTheme from './app/navigation/navigationTheme'
 import AppNavigator from './app/navigation/AppNavigator'
 import AuthNavigator from './app/navigation/AuthNavigator'
-import useLocation from './app/hooks/useLocation'
 import AuthContext from './app/auth/context'
+import authStorage from './app/auth/storage'
 
 //create a component
 export default function App() {
   const [user, setUser] = useState()
+  const [isReady, setIsReady] = useState(false)
 
-  const restoreToken = async () => {
-    const token = await authStorage.getToken()
-    if (!token) return
-    setUser(jwtDecode(token))
+  const restoreUser = async () => {
+    const user = await authStorage.getUser()
+    if (user) setUser(user)
   }
 
-  useEffect(() => {
-    restoreToken()
-  }, [])
+  if (!isReady) {
+    return (
+      <AppLoading
+        startAsync={() => restoreUser()}
+        onFinish={() => setIsReady(true)}
+        onError={console.warn}
+      />
+    )
+  }
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>
@@ -32,3 +37,23 @@ export default function App() {
     </AuthContext.Provider>
   )
 }
+
+// //imported 3rd party libraries
+// import { NavigationContainer } from '@react-navigation/native'
+// import { useState } from 'react'
+// import AppLoading from 'expo-app-loading'
+
+// //imported from this repo
+// import navigationTheme from './app/navigation/navigationTheme'
+// import AppNavigator from './app/navigation/AppNavigator'
+// import AuthNavigator from './app/navigation/AuthNavigator'
+// import AuthContext from './app/auth/context'
+// import authStorage from './app/auth/storage'
+// import Screen from './app/components/Screen'
+// import { AppForm, AppFormField } from './app/components/Forms'
+// import ListingEditScreen from './app/screens/ListingEditScreen'
+
+// //create a component
+// export default function App() {
+//   return <ListingEditScreen />
+// }
